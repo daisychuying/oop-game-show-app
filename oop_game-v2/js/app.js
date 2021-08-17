@@ -12,7 +12,7 @@ startGameBtn.addEventListener('click', e => {
     game.startGame();
     game.randomColor();
     document.getElementById('overlay').className = "start";
-
+    document.getElementById('game-over-message').innerHTML = ``;
 })
 
 /**
@@ -35,7 +35,7 @@ const keys = document.querySelectorAll('.key');
 document.addEventListener('keyup', e => {
     for(let i = 0; i < keys.length; i++){
         if(e.key === keys[i].textContent){
-            if(keys[i].disabled === false){
+            if(keys[i].disabled === false && overlay.style.display === "none"){
                 game.handleInteraction(keys[i]);
             }
         }

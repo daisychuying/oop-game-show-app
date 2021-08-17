@@ -71,7 +71,7 @@ class Game{
                 this.activePhrase.showMatchedLetter(keyboard.textContent);
                 if (this.checkForWin()){
                     this.gameOver();
-                }
+                }    
             }
     }
 
@@ -91,17 +91,16 @@ class Game{
      * h1 element with a friendly win or loss message. Finally it will
      * reset the game to origin. 
      */
+    ///question
     gameOver(){
-        document.getElementById('overlay').style.display = 'inherit';
         const overlay = document.getElementById('overlay');
+        overlay.style.display = 'inherit';
         if (this.checkForWin()){
             document.getElementById('game-over-message').innerHTML = 'You Win! :D';
-            overlay.classList.remove('start');
-            overlay.classList.add('win');
+            overlay.className = 'win';
         } else {
             document.getElementById('game-over-message').innerHTML = 'You Lost. QAQ';
-            overlay.classList.remove('start');
-            overlay.classList.add('lose');
+            overlay.className = 'lose';
         }
         this.gameReset();
     }
@@ -109,7 +108,6 @@ class Game{
      * This will reset the game after the game is completed
      */
     gameReset(){
-        document.querySelector('#phrase ul').innerHTML = ``;
         const keyboard = document.querySelectorAll('.key');
         for(let key of keyboard){
             key.disabled = false;
@@ -120,6 +118,7 @@ class Game{
         for(let i = 0; i < img.length; i++){
             img[i].src="images/liveHeart.png";
         }
+        document.querySelector('#phrase ul').innerHTML = ``;
     }
 
     /**
